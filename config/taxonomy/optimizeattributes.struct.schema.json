@@ -1,0 +1,63 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$id": "optimizeattributes.structs.schema.json",
+    "title": "Optimize Attributes Taxonomy",
+    "description": "This taxonomy defines the structure of the attributes used in soft policies by the config policy manager.",
+    "type": "object",
+    "definitions": {
+        "attribute": {
+            "type": "object",
+            "description": "Attributes which can be used as parameters in configuration rules.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "$ref": "optimizeattributes.values.schema.json#/definitions/attribute_name_vals"         
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "The units used to measure the values of the attribute.",
+                    "$ref": "optimizeattributes.values.schema.json#/definitions/unit_vals"
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The current value of the attribute"
+                },
+                "resource": {
+                    "type": "object",
+                    "description": "The resource with which the attribute is associated.",
+                    "properties": {
+                        "resource_type": {
+                            "type": "object",
+                            "description": "The type of resource with which the attribute is associated.",
+                            "properties": {
+                                "highlevel_type": {
+                                    "type": "string",
+                                    "$ref": "optimizeattributes.values.schema.json#/definitions/resource_highlevel_type_vals"
+                                },
+                                "resource_subtype": {
+                                    "type": "string",
+                                    "$ref": "optimizeattributes.values.schema.json#/definitions/resource_subtype_vals"                   
+                                }
+                            },
+                            "required": ["highlevel_type"]
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the resource",
+                            "$ref": "optimizeattributes.values.schema.json#/definitions/resource_name_vals"   
+                        },
+                        "scope": {
+                            "type": "string",
+                            "description": "The scoping level to which the resource is associated.",
+                            "$ref": "optimizeattributes.values.schema.json#/definitions/scope_vals"             
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "properties": {
+        "attribute": { "$ref":  "#/definitions/attribute"}
+     },
+    "additionalProperties": false
+}

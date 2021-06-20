@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$id": "optimizationattributes.values.schema.json",
+    "title": "Optimization Attribute Values Taxonomy",
+    "description": "Values used in association with optimization attributes used in the process of defining the blueprint.",
+    "definitions": {
+        "attribute_name_vals": {
+            "type": "string",
+            "description": "Names of attributes that are taken into account when optimizing the blueprint.",
+            "enum": ["latency", "bandwidth", "storage-amount", "storage-cost"]
+        },
+        "unit_vals": {
+           "oneOf": [
+               {
+                   "properties": {
+                        "size_unit_vals": {
+                            "enum": ["megabytes", "gigabytes", "terabytes"]
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "time_unit_vals": {
+                            "enum": ["seconds", "milliseconds"]
+                        }
+                    }
+                },
+                {
+                    "relative_vals": {
+                        "enum": ["low", "high"]
+                    }
+                }
+           ]
+        },
+        "resource_highlevel_type_vals": {
+            "enum": ["storage", "cluster", "network"]
+        },
+        "resource_subtype_vals": {
+            "enum": ["object store", "relational database", "kubernetes cluster"]
+        }, 
+        "resource_name_vals": {
+            "enum": ["Netherlands cluster", "Turkish cluster", "Europe cloud object store"]
+        },
+        "scope_vals": {
+            "enum": ["cluster", "workload", "data set"]
+        }
+    },
+    "properties": {
+        "attribute_name_vals": { "$ref": "#/definitions/attribute_name_vals" },
+        "unit_vals": { "$ref": "#/definitions/unit_vals" },
+        "resource_highlevel_type_vals": { "$ref": "#/definitions/resource_highlevel_type_vals" },
+	    "resource_subtype_vals": { "$ref": "#/definitions/resource_subtype_vals" },
+        "resource_name_vals": {"$ref": "#/definitions/resource_name_vals"},
+        "scope_vals": {"$ref": "#/definitions/scope_vals"}
+    },
+    "additionalProperties": false
+}
