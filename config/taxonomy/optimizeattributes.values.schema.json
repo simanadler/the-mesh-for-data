@@ -27,7 +27,12 @@
                 },
                 {
                     "relative_vals": {
-                        "enum": ["low", "high"]
+                        "enum": ["minimize", "maximize"]
+                    }
+                },
+                {
+                    "relative_location_vals": {
+                        "enum": ["close-to-compute", "close-to-data"]
                     }
                 }
            ]
@@ -42,7 +47,7 @@
             "enum": ["Netherlands cluster", "Turkish cluster", "Europe cloud object store"]
         },
         "scope_vals": {
-            "enum": ["cluster", "workload", "data set"]
+            "enum": ["cluster", "workload", "dataset"]
         }
     },
     "properties": {
